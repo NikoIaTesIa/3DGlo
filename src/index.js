@@ -1,3 +1,6 @@
-import func from './modules/one'
+import timerWidget from './modules/timerWidget'
 
-func()
+const date = new Date()
+date.setHours(date.getHours() + 12)
+
+timerWidget(date)
