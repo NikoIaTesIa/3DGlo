@@ -1,5 +1,5 @@
-const logger = () => {
+const one = () => {
     console.log('one.js');
 }
 
-export default logger
+export default one

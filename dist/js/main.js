@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("one.js"),console.log("two.js"),console.log("123")})();
+(()=>{"use strict";console.log("one.js"),console.log("two.js")})();

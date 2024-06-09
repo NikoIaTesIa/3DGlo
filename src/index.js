@@ -1,5 +1,3 @@
-import func1 from './modules/one'
-import func2 from './modules/two'
+import func from './modules/one'
 
-func1()
-func2()
+func()
