@@ -1,8 +1,8 @@
 const validation = () => {
-    const calcItems = document.querySelectorAll('.calc-block > input[type="text"]')
-    const mainItems = document.querySelectorAll('#form1 input')
-    const connectItems = document.querySelectorAll('#form2 input')
-    const popuptItems = document.querySelectorAll('#form3 input')
+    const calcForm = document.querySelector('.calc-block')
+    const mainForm = document.querySelector('#form1')
+    const connectForm = document.querySelector('#form2')
+    const popupForm = document.querySelector('#form3')
 
     const validate = (elem) => {
         switch (elem.value !== '') {
@@ -41,11 +41,21 @@ const validation = () => {
         elem.value = elem.value.replace(/^\-/, '').replace(/\-$/, '')
     }
 
-    calcItems.forEach(item => item.addEventListener('input', () => item.value = item.value.replace(/\D+/, '')))
+    calcForm.addEventListener('input', (e) => {
+        if (e.target.matches('input[type="text"]')) {
+            e.target.value = e.target.value.replace(/\D+/, '')
+        }
+    })
 
-    mainItems.forEach(item => item.addEventListener('blur', () => validate(item)))
-    connectItems.forEach(item => item.addEventListener('blur', () => validate(item)))
-    popuptItems.forEach(item => item.addEventListener('blur', () => validate(item)))
+    mainForm.addEventListener('focusout', (e) => {
+        if (e.target.matches('input')) { validate(e.target) }
+    })
+    connectForm.addEventListener('focusout', (e) => {
+        if (e.target.matches('input')) { validate(e.target) }
+    })
+    popupForm.addEventListener('focusout', (e) => {
+        if (e.target.matches('input')) { validate(e.target) }
+    })
 }
 
 export default validation

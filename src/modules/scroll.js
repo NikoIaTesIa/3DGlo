@@ -1,5 +1,5 @@
 const scroll = () => {
-    const menuItems = document.querySelectorAll('menu > ul > li > a')
+    const menu = document.querySelector('menu')
     const chevron = document.getElementById('chevron')
 
     const handleScroll = (item) => {
@@ -8,15 +8,15 @@ const scroll = () => {
         itemTarget.scrollIntoView({ block: "start", behavior: "smooth" })
     }
 
-    menuItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            event.preventDefault()
-            handleScroll(item)
-        })
+    menu.addEventListener('click', (e) => {
+        if (e.target.matches('ul > li > a')) {
+            e.preventDefault()
+            handleScroll(e.target)
+        }
     })
 
-    chevron.addEventListener('click', (event) => {
-        event.preventDefault()
+    chevron.addEventListener('click', (e) => {
+        e.preventDefault()
         handleScroll(chevron)
     })
 }

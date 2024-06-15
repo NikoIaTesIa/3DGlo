@@ -1,7 +1,6 @@
 const modal = () => {
     const modal = document.querySelector('.popup')
-    const buttons = document.querySelectorAll('.popup-btn')
-    const closeBtn = modal.querySelector('.popup-close')
+    const modalCallingBlock = document.getElementById('service-block')
     const translateValue = 110
 
     let animationId, step, accelerationRatio
@@ -25,8 +24,20 @@ const modal = () => {
         step -= accelerationRatio
     }
 
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
+    modal.addEventListener('click', (e) => {
+        if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+            const inputs = modal.querySelectorAll('input')
+
+            inputs.forEach(item => { item.value = '' })
+            modal.style.display = ''
+            modal.style.transition = ''
+            modal.style.transform = `translateY(-${translateValue}%)`
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+        }
+    })
+
+    modalCallingBlock.addEventListener('click', (e) => {
+        if (e.target.matches('.popup-btn')) {
             modal.style.display = 'block'
             modal.style.transform = `translateY(-${translateValue}%)`
             modal.style.backgroundColor = 'rgba(0, 0, 0, 0)'
@@ -34,14 +45,7 @@ const modal = () => {
             step = translateValue
             accelerationRatio = 5
             popupAnimation()
-        })
-    })
-
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = ''
-        modal.style.transition = ''
-        modal.style.transform = `translateY(-${translateValue}%)`
-        modal.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+        }
     })
 }
 
