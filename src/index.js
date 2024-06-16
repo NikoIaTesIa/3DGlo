@@ -4,6 +4,7 @@ import modal from './modules/modal'
 import scroll from './modules/scroll'
 import validation from './modules/validation'
 import tabs from './modules/tabs'
+import slider from './modules/slider'
 
 const date = new Date()
 date.setHours(date.getHours() + 12)
@@ -14,3 +15,9 @@ modal()
 scroll()
 validation()
 tabs()
+slider(
+    '.portfolio-content', '.portfolio-item',
+    '.portfolio-dots', '.dot',
+    '#arrow-left', '#arrow-right',
+    'portfolio-item-active', 'dot-active'
+)
