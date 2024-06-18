@@ -46,8 +46,8 @@ const calc = (price) => {
             const stepExp = `${stepValue}`.length - 1
             const diffExp = `${value - currentValue}`.length - 1
 
-            if (diffExp === stepExp - 1) {
-                stepValue = stepExp - 1 >= 0 ? Math.pow(10, stepExp - 1) : Math.pow(10, 0)
+            if (diffExp <= stepExp - 1) {
+                stepValue = Math.pow(10, diffExp)
             }
 
             currentValue += stepValue
